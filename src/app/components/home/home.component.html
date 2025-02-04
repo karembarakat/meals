@@ -1,4 +1,8 @@
-<app-navbar (categorySelected)="onCategorySelected($event)"> </app-navbar>
+<div class="p-4 overflow-hidden sm:ml-64 min-h-screen">
+
+  <app-navbar (categorySelected)="onCategorySelected($event)"> </app-navbar>
 
 
-<app-meal [selectedCategory]="selectedCategory"></app-meal>
+  <app-meal [selectedCategory]="selectedCategory"></app-meal>
+
+</div>

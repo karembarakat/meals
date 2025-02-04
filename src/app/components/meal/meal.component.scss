@@ -1,0 +1,37 @@
+@mixin browser-prefix($property, $value) {
+  -webkit-#{$property}: $value; // Chrome, Safari, iOS, Android
+  -moz-#{$property}: $value;    // Firefox
+  -ms-#{$property}: $value;     // Internet Explorer
+  -o-#{$property}: $value;      // Opera
+  #{$property}: $value;         // Standard
+}
+
+
+.meal{
+
+  @include browser-prefix(transform, scale(1));
+  img{
+    @include browser-prefix(transform, translateY(-35%));
+
+    // transform: translateY(-35%);
+  }
+  &:hover{
+
+    @include browser-prefix(transform, scale(1.1));
+    @include browser-prefix(transition, 0.3s);
+
+
+
+    img{
+      @include browser-prefix(animation,  rotate360 0.5s linear);
+    }
+  }
+}
+@keyframes rotate360 {
+  from {
+    @include browser-prefix(transform,  translateY(-35%) rotate(0deg));
+  }
+  to {
+    @include browser-prefix(transform,  translateY(-35%) rotate(360deg));
+  }
+}

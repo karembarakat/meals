@@ -4,20 +4,12 @@
 
 <div class="sm:hidden mt-8"><label for="tabs" class="sr-only">Select your country</label><select id="tabs"
     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-    <option value="Beef">Beef</option>
-    <option value="Breakfast">Breakfast</option>
-    <option value="Chicken">Chicken</option>
-    <option value="Dessert">Dessert</option>
-    <option value="Goat">Goat</option>
-    <option value="Lamb">Lamb</option>
-    <option value="Miscellaneous">Miscellaneous</option>
-    <option value="Pasta">Pasta</option>
-    <option value="Pork">Pork</option>
-    <option value="Seafood">Seafood</option>
-    <option value="Side">Side</option>
-    <option value="Starter">Starter</option>
-    <option value="Vegan">Vegan</option>
-    <option value="Vegetarian">Vegetarian</option>
+
+
+    <option (click)="onSelectCategory('all')" value="all">all</option>
+    @for(category of categories; track $index){
+    <option (click)="onSelectCategory(category.strCategory)" value="{{ category.strCategory }}">{{ category.strCategory }}</option>
+  }
   </select></div>
 <ul class="sm:flex hidden mt-8 flex-wrap gap-4  font-medium text-center text-gray-500 border-b border-gray-200">
   <li class="me-2">
@@ -26,8 +18,8 @@
   </li>
   @for(category of categories; track $index){
   <li class="me-2">
-    <span (click)="onSelectCategory(category.strCategory)"
-      class="inline-block px-4 py-2  border transition-all hover:shadow-xl shadow duration-300 rounded-full hover:text-gray-600 hover:bg-gray-50 active">{{ category.strCategory }}</span>
+    <span (click)="onSelectCategory(category.strCategory)"    [ngClass]="{ 'bg-black text-white': selectedCategory === category.strCategory }"
+      class="cursor-pointer inline-block px-4 py-2  border transition-all hover:shadow-xl shadow duration-300 rounded-full hover:text-white hover:bg-black">{{ category.strCategory }}</span>
   </li>
 }
 </ul>
